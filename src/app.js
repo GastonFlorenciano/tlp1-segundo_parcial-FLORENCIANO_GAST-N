@@ -37,6 +37,20 @@ app.post('/products', (req, res) => {
 
 })
 
+app.put('/products/:id', (req, res) => {
+    const id = parseInt(req.params.id)
+    const { name, quantity, price } = req.body
+
+    const findProduct = db.find(p => p.id == id)
+
+    findProduct.name = name;
+    findProduct.quantity = quantity;
+    findProduct.price = price;
+    
+
+    res.json({msg: "PRODUCTO EDITADO!"})
+})
+
 
 
 //======================================
