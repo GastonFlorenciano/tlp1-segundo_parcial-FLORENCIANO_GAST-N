@@ -51,6 +51,16 @@ app.put('/products/:id', (req, res) => {
     res.json({msg: "PRODUCTO EDITADO!"})
 })
 
+app.delete('/products/:id', (req, res) => {
+    const id = parseInt(req.params.id)
+
+    const findProduct = db.find(p => p.id == id);
+    const productIndex = db.indexOf(findProduct);
+
+    db.splice(productIndex, 1);
+
+    res.json({msg: "PRODUCTO ELIMINADO!"})
+})
 
 
 //======================================
