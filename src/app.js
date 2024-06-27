@@ -15,6 +15,20 @@ app.get('/products', (req, res) => {
 })
 
 
+app.get('/products/:id', (req, res) => {
+    const id = parseInt(req.params.id)
+
+    const findProduct = db.find(p => p.id == id)
+
+    if(findProduct){
+        res.send(findProduct)
+    }else{
+        res.json({msg: "PRODUCTO NO ENCONTRADO"})
+    }
+})
+
+
+
 //======================================
 app.listen(3000, ()=>{
     console.log("CORRIENDO EN EL PUERTO 3000");
