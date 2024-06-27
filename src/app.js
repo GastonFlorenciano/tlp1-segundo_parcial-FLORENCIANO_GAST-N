@@ -27,6 +27,16 @@ app.get('/products/:id', (req, res) => {
     }
 })
 
+app.post('/products', (req, res) => {
+    const idRandom = new Date().getTime()
+    const { name, quantity, price } = req.body
+
+    db.push({ id: idRandom, name: name, quantity: quantity, price: price })
+
+    res.json({msg: "PRODUCTO CREADO!"})
+
+})
+
 
 
 //======================================
